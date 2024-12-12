@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="header">
+
+    <p class="logo">©</p> 
+
+    <ul class="list">
+
+      <li><a href="addtocart.html">Home</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="">Contact</a></li>
+      <li><a href="">Pages</a></li>
+
+    </ul>
+
+    <div class="search" id="searchbutton">
+      <i class="fas fa-search"></i>
+      <input type="search" id="search" onkeyup="filterProducts()">
+    </div>
+
+    <div style="display: flex; gap: 5px;">
+      <div>
+        <a href="vali.html"
+          style="background-color: white; padding:7px 9px; border-radius: 3px; color: rgba(71, 61, 139, 0.639); border: none;">
+          <i class="fas fa-user-alt" id="btn"></i></a>
+        <a href="paymant.html"><button
+            style="background-color: white; padding:7px 9px; border-radius: 3px; color: rgba(71, 61, 139, 0.639); border: none;">Paymant</button></a>
+
+      </div>
+
+      <div class="cart" id="cartButton">
+
+        <i class="fas fa-shopping-cart"></i>
+        <p id="count">0</p>
+      </div>
+    </div>
+  </div>
+  <div class="slider-container">
+
+    <div class="slider">
+
+      <!-- <div class="slide">
+        <img src="https://minion-vinovatheme.myshopify.com/cdn/shop/files/slideshow-1_f9506a0f-cd22-46e1-89e6-dfb216eda48b_1920x950.jpg?v=1617703696" alt="">
+        <div class="slide-text">
+          <h2>Slide 1: Welcome to Our Store</h2>
+          <p>Discover the best deals today!</p>
+        </div>
+      </div> -->
+
+      <div class="slide">
+        <img src="https://minion-vinovatheme.myshopify.com/cdn/shop/files/s-4-2_2048x.jpg?v=1617265617" alt="">
+        <div class="slide-text">
+          <h1>Winter Collection</h1>
+          <p>Explore our newest arrivals.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img
+          src="https://minion-vinovatheme.myshopify.com/cdn/shop/files/s-4-1_b1f1486f-a205-466e-868c-43c691e3c3d6_2048x.jpg?v=1617267683"
+          alt="">
+        <div class="slide-text">
+          <h1>New Arrivals Sale</h1>
+          <p>Get up to 50% off on select items!</p>
+        </div>
+      </div>
+
+      <!-- <div class="slide">
+        <img src="https://minion-vinovatheme.myshopify.com/cdn/shop/files/slideshow_3_2048x.jpg?v=1618200158" alt="">
+        <div class="slide-text">
+          <h2>Slide 4: Shop with Confidence</h2>
+          <p>Fast delivery and easy returns.</p>
+        </div>
+      </div> -->
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="container" style="margin-top: 20px;">
+    <h1>Modern Workwear Collection</h1>
+    <div id="root"></div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <span id="close-cart">&times;</span>
+    </div>
+    <div id="cartItem"></div>
+    <div class="cart-total">
+      <h3>Total: <span id="total">$0.00</span></h3>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-contact">
+        <p><i class="fas fa-comments"></i> Chat With Sales</p>
+         <p><i class="fas fa-phone"></i> 1 (888) 602-6756</p>
+        <p><i class="fas fa-envelope"></i> sales@pressable.com</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Managed WordPress Hosting</a></li>
+            <li><a href="#">Agencies</a></li>
+            <li><a href="#">Small & Medium-Sized Businesses</a></li>
+            <li><a href="#">Freelancers</a></li>
+            <li><a href="#">High-Traffic Websites</a></li>
+            <li><a href="#">WooCommerce</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Legal</a></li>
+            <li><a href="#">Press Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">eBooks</a></li>
+            <li><a href="#">Knowledge Base</a></li>
+            <li><a href="#">Customer Reviews</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+            <li><a href="#">Strategic Partners</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Powered by WordPress</p>
+      <p><a href="#">Host With Pressable</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="singleproduct.js"></script>
+  <script>
+    let slideindex = 0;
+    let slider = document.querySelectorAll(".slide");
+
+    let time = setInterval(() => {
+      slideindex = (slideindex + 1) % slider.length;
+
+      slider.forEach((slide) => {
+        slide.style.transform = `translateX(-${slideindex * 100}%)`
+      });
+
+    }, 2000);
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <style>
+    #single-product img {
+      width: 250px;
+    }
+
+    /* Main container styling */
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin: 0 auto;
+      max-width: 1200px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      gap: 40px;
+      flex-wrap: wrap;
+      /* Makes layout responsive */
+    }
+
+    /* Product image styling */
+    #single-product {
+      flex: 1;
+      text-align: center;
+    }
+
+    #single-product img {
+      width: 60%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Product details styling */
+    .product {
+      flex: 1;
+      text-align: left;
+    }
+
+    .product h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .product p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d6401e;
+    }
+
+    /* Button styles */
+    button {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Add to Cart button */
+    .cart-btn {
+      background-color: rgba(71, 61, 139, 0.43);
+      color: #fff;
+    }
+
+    .cart-btn:hover {
+      background-color: rgba(71, 61, 139, 0.639);
+    }
+
+    /* Back to Shopping button */
+    .back-btn {
+      background-color: rgba(71, 61, 139, 0.43);
+      color: white;
+    }
+
+    .back-btn a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background-color: rgba(71, 61, 139, 0.639);
+    }
+
+
+    .increment, .decrement{
+      padding:0px 0px 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      #single-product img {
+        max-width: 100%;
+      }
+
+      .product h2 {
+        font-size: 1.8rem;
+      }
+
+      .product p {
+        font-size: 1.3rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+
+    <p class="logo">©</p>
+
+
+    <ul class="list">
+      <li><a href="addtocart.html">Home</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="">Contact</a></li>
+      <li><a href="">Pages</a></li>
+    
+    </ul>
+
+        <div class="search" id="searchbutton">
+      <i class="fas fa-search"></i>
+      <input type="search" id="search" onkeyup="filterProducts()">
+    </div>
+
+    <div style="display: flex; gap: 5px;">
+      <div>
+        <a href="vali.html" style="background-color: white; padding:7px 9px; border-radius: 3px; color: rgba(71, 61, 139, 0.639); border: none;"> <i class="fas fa-user-alt" id="btn"></i></a>
+      <a href="paymant.html"><button style="background-color: white; padding:7px 9px; border-radius: 3px; color: rgba(71, 61, 139, 0.639); border: none;" >Paymant</button></a>
+
+      </div>
+
+    <div class="cart" id="cartButton">
+    
+      <i class="fas fa-shopping-cart"></i>
+      <p id="count">0</p>
+    </div>
+    </div>
+  </div>
+  <div class="main">
+    <!-- Product Image Section -->
+    <div id="single-product">
+      <!-- <img id="product-image" src="images/sample-product.jpg" alt="Product Image"> -->
+    </div>
+
+    <!-- Product Details Section -->
+    <div class="product">
+      <h2 id="product-name">Sample Product Name</h2>
+      <p id="product-price">$49.99</p>
+
+      <!-- Quantity counter -->
+      <div class="counter">
+        <button class="increment" onclick="increment()">+</button>
+        <span id="quantity">1</span>
+        <button class="decrement" onclick="decrement()">-</button>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <button class="cart-btn" onclick="addToCart()">Add to Cart</button>
+
+      <!-- Back to Shopping Button -->
+      <button class="back-btn">
+        <a href="addtocart.html">Back to Shopping</a>
+      </button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-contact">
+        <p><i class="fas fa-comments"></i> Chat With Sales</p>
+        <p><i class="fas fa-phone"></i> 1 (888) 602-6756</p>
+        <p><i class="fas fa-envelope"></i> sales@pressable.com</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Solutions</h3>
+          <ul>
+            <li><a href="#">Managed WordPress Hosting</a></li>
+            <li><a href="#">Agencies</a></li>
+            <li><a href="#">Small & Medium-Sized Businesses</a></li>
+            <li><a href="#">Freelancers</a></li>
+            <li><a href="#">High-Traffic Websites</a></li>
+            <li><a href="#">WooCommerce</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Legal</a></li>
+            <li><a href="#">Press Kit</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">eBooks</a></li>
+            <li><a href="#">Knowledge Base</a></li>
+            <li><a href="#">Customer Reviews</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+            <li><a href="#">Strategic Partners</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Powered by WordPress</p>
+      <p><a href="#">Host With Pressable</a></p>
+    </div>
+  </footer>
+
+  <script src="singleproduct.js"></script>
+  <script>
+    let cart = [];
+    let quantity = 1;
+
+    function increment() {
+      quantity++;
+      document.getElementById('quantity').innerText = quantity;
+    }
+
+    function decrement() {
+      if (quantity > 1) {
+        quantity--;
+        document.getElementById('quantity').innerText = quantity;
+      }
+    }
+
+    function addToCart() {
+      const productId = 1;
+      const selectedProduct = {
+        id: productId,
+        name: document.getElementById('product-name').innerText,
+        price: parseFloat(document.getElementById('product-price').innerText.replace('$', '')),
+        quantity: quantity
+      };
+
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        cart.push(selectedProduct);
+      }
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const countElement = document.getElementById('count');
+      countElement.innerText = cart.reduce((total, item) => total + item.quantity, 0);
+    }
+  </script>
+
+</body>
+
+</html>

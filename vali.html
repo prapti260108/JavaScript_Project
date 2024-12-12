@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+     
+      .login-container {
+        background: linear-gradient(to right, #B0ABCD, #9890c6);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px #000000;
+        width: 350px;
+        padding: 30px;
+      }
+
+      .form-box {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        padding: 40px 70px 40px 40px;
+      }
+      #loginBtn{
+        color: WHITE;
+      }
+      .button-box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .toggle-btn {
+        background: linear-gradient(to right, #B0ABCD, #9890c6);
+        border: none;
+        padding: 10px;
+        border-radius: 30px;
+        width: 48%;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .toggle-btn.active {
+        background-color: #fff;
+        color: #B0ABCD;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 30px;
+        outline: none;
+        background: #f0f0f0;
+      }
+
+      .forgot-pass {
+        color: #B0ABCD;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-size: 12px;
+      }
+
+      .submit-btn {
+        background: linear-gradient(to right, #B0ABCD, #B0ABCD);
+        border: none;
+        padding: 10px;
+        border-radius: 30px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #B0ABCD;
+      }
+
+      .member-text {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .member-text a {
+        color: #B0ABCD;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="form-box">
+        <div class="button-box">
+          <button id="loginBtn" class="toggle-btn active" onclick="showLogin()">
+            Login
+          </button>
+          <button id="signupBtn" class="toggle-btn" onclick="showSignup()">
+            Signup
+          </button>
+        </div>
+        <form id="login" class="input-group" onsubmit="login(event)">
+          <input
+            type="email"
+            id="loginEmail"
+            class="input-field"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            type="password"
+            id="loginPassword"
+            class="input-field"
+            placeholder="Password"
+            required
+          />
+          <a href="#" class="forgot-pass">Forgot password?</a>
+          <button type="submit" class="submit-btn">Login</button>
+          <p class="member-text">
+            Not a member? <a href="#" onclick="showSignup()">Signup now</a>
+          </p>
+        </form>
+        <form id="signup" class="input-group" style="display: none" onsubmit="signup(event)">
+          <input
+            type="email"
+            id="signupEmail"
+            class="input-field"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            type="password"
+            id="signupPassword"
+            class="input-field"
+            placeholder="Password"
+            required
+          />
+          <input
+            type="password"
+            id="confirmPassword"
+            class="input-field"
+            placeholder="Confirm Password"
+            required
+          />
+          <button type="submit" class="submit-btn">Signup</button>
+          <p class="member-text">
+            Already a member? <a href="#" onclick="showLogin()">Login here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <script>
+      function showLogin() {
+        document.getElementById("login").style.display = "block";
+        document.getElementById("signup").style.display = "none";
+        document.getElementById("loginBtn").classList.add("active");
+        document.getElementById("signupBtn").classList.remove("active");
+      }
+
+      function showSignup() {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("signup").style.display = "block";
+        document.getElementById("signupBtn").classList.add("active");
+        document.getElementById("loginBtn").classList.remove("active");
+      }
+
+      function signup(event) {
+        event.preventDefault();
+        const email = document.getElementById("signupEmail").value;
+        const password = document.getElementById("signupPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password === confirmPassword) {
+          localStorage.setItem("signupEmail", email);
+          localStorage.setItem("signupPassword", password);
+
+          alert("Signup successful! You can now log in.");
+          showLogin();
+        } else {
+          alert("Passwords do not match!");
+        }
+      }
+
+      function login(event) {
+        event.preventDefault();
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+
+        const storedEmail = localStorage.getItem("signupEmail");
+        const storedPassword = localStorage.getItem("signupPassword");
+
+        if (email === storedEmail && password === storedPassword) {
+          alert("Login successful!");
+          // Redirect to main page or dashboard
+          window.location.href = "addtocart.html"; // Change to your main page URL
+        } else {
+          alert("Invalid email or password. Please try again.");
+        }
+      }
+    </script>
+  </body>
+</html>
